@@ -1,1 +1,1 @@
-exclude: [Gemfile, Gemfile.lock, vendor]
+exclude: [Gemfile, Gemfile.lock, vendor, admin]
