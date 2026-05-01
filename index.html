@@ -1,0 +1,57 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ site.data.site.producer_name }} | Beat Store</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <style>
+        :root { --bg-color: #0a0a0a; --brand-yellow: #FFD700; --text-main: #f0f0f0; --text-muted: #a0a0a0; }
+        body, html { margin: 0; padding: 0; font-family: -apple-system, sans-serif; background-color: var(--bg-color); color: var(--text-main); }
+        .fixed-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-image: url('{{ site.data.site.bg_image }}'); background-size: cover; background-position: center; z-index: -1; box-shadow: inset 0 0 0 2000px rgba(10, 10, 10, 0.85); }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; border-bottom: 1px solid rgba(255, 215, 0, 0.1); }
+        h1, h2, h3 { color: var(--brand-yellow); text-transform: uppercase; letter-spacing: 2px; }
+        #intro { text-align: center; padding-top: 15vh; }
+        #intro h1 { font-size: 3rem; margin-bottom: 10px; }
+        .beatstars-wrapper { width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        #contact { text-align: center; border-bottom: none; }
+        .contact-btn { display: inline-block; background-color: var(--brand-yellow); color: var(--bg-color); padding: 15px 40px; text-decoration: none; font-weight: bold; border-radius: 4px; margin-top: 20px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="fixed-bg"></div>
+    <div class="container">
+        
+        <section id="intro">
+            <h1>{{ site.data.site.producer_name }}</h1>
+            <p style="color: var(--text-muted);">{{ site.data.site.bio }}</p>
+        </section>
+
+        <section id="store">
+            <h2>Beat Store</h2>
+            <div class="beatstars-wrapper">
+                <iframe src="https://player.beatstars.com/?storeId={{ site.data.site.beatstars_id }}" width="100%" height="600" frameborder="0" scrolling="no"></iframe>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Work</h2>
+            <a href="mailto:{{ site.data.site.email }}" class="contact-btn">Email Me</a>
+        </section>
+    </div>
+
+    <!-- Handles login redirection -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+          }
+        });
+      }
+    </script>
+</body>
+</html>

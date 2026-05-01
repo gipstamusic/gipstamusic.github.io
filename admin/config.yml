@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "settings"
+    label: "Store Settings"
+    files:
+      - file: "_data/site.yml"
+        label: "Homepage Content"
+        name: "homepage"
+        fields:
+          - {label: "Producer Name", name: "producer_name", widget: "string"}
+          - {label: "Bio", name: "bio", widget: "string"}
+          - {label: "BeatStars Store ID", name: "beatstars_id", widget: "string"}
+          - {label: "Background Image URL", name: "bg_image", widget: "string"}
+          - {label: "Contact Email", name: "email", widget: "string"}
