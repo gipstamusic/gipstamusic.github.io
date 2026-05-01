@@ -8,4 +8,12 @@ sound_kits:
     price: "$20.00"
     image: "/images/feed-the-street.jpg"
     link: "https://www.beatstars.com/gipstamusic/sound-kits/feed-the-street"
-    
+services:
+  - title: "Mix and Master"
+    price: "$300.00"
+    image: "/images/mix-and-master.jpg"
+    link: "https://www.beatstars.com/gipstamusic/services/mix-and-master"
+  - title: "Custom Beat"
+    price: "$500.00"
+    image: "/images/custom-beat.jpg"
+    link: "https://www.beatstars.com/gipstamusic/services/custom-beat"

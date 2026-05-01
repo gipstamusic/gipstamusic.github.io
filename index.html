@@ -133,13 +133,20 @@
         </div>
     </section>
 
-    <!-- 5. BEATSTARS MIXING & MASTERING -->
+   <!-- 5. SERVICES -->
     <section id="services">
         <div class="container">
             <h2>Services</h2>
-            <div class="iframe-wrapper">
-                <!-- Replace this src URL with your specific BeatStars Services embed link -->
-                <iframe src="https://player.beatstars.com/?storeId=96640&type=services" height="400" scrolling="no"></iframe>
+            <div class="kits-grid"> <!-- Reusing the Kits CSS grid so it matches perfectly -->
+                {% for service in site.data.site.services %}
+                <a href="{{ service.link }}" target="_blank" class="kit-card">
+                    <img src="{{ service.image }}" alt="{{ service.title }}">
+                    <div class="kit-info">
+                        <h3>{{ service.title }}</h3>
+                        <div class="price">{{ service.price }}</div>
+                    </div>
+                </a>
+                {% endfor %}
             </div>
         </div>
     </section>
