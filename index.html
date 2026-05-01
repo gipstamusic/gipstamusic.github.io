@@ -8,15 +8,24 @@
     <title>{{ site.data.site.producer_name }} | Beat Store</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
-    :root { --bg: #050505; --yellow: #FFDE00; --text: #ffffff; --gray: #7F7F7F; }
+    :root { --bg: #050505; --yellow: #FFDE00; --text: #ffffff; --gray: #7F7F7F; --dark-card: rgba(15, 15, 15, 0.95); }
+    
+    /* Global Static Background */
     body, html { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; background-color: var(--bg); color: var(--text); scroll-behavior: smooth; }
+    body {
+        background-image: url('{{ site.data.site.bg_image }}');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        box-shadow: inset 0 0 0 2000px rgba(5, 5, 5, 0.7);
+    }
     a { text-decoration: none; color: var(--text); }
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center; }
     section { padding: 100px 0; }
     h2 { font-size: 2.2rem; margin-bottom: 50px; text-transform: uppercase; letter-spacing: 2px; }
 
-    /* Fixed Navigation */
+    /* Navigation */
     nav { 
         display: flex; justify-content: space-between; align-items: center; 
         padding: 15px 40px; position: fixed; width: 100%; top: 0; 
@@ -27,52 +36,66 @@
     .nav-links a { margin-left: 20px; font-size: 0.85rem; text-transform: uppercase; font-weight: bold; }
     .nav-links a:hover { color: var(--yellow); }
 
-    /* Hero & Gray Card */
-    #hero { 
-        padding: 250px 0 150px; background-image: url('{{ site.data.site.bg_image }}'); 
-        background-size: cover; background-position: center; background-attachment: fixed;
-    }
-    .content-card {
-        background: var(--gray); max-width: 800px; margin: 0 auto; padding: 60px;
-        border-radius: 4px; color: #000; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    /* 1. Restored Hero (No Grey Box) */
+    #hero { padding: 250px 0 150px; }
+    #hero img.hero-logo { max-width: 140px; margin-bottom: 30px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.5)); }
+    #hero h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+    #hero p { color: var(--gray); font-size: 1.1rem; letter-spacing: 1px; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
+
+    /* The "Floating Dark Card" Style for Content Sections */
+    .floating-card {
+        background: var(--dark-card);
+        padding: 60px 40px;
+        border-radius: 8px;
+        border: 1px solid #333;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
 
-    /* Beat Store - Restoring Full Width */
-    .iframe-wrapper { width: 100%; max-width: 1100px; margin: 0 auto; }
-    .iframe-wrapper iframe { width: 100%; border: none; border-radius: 8px; }
+    /* Beat Store Fix */
+    .iframe-wrapper { width: 100%; max-width: 1100px; margin: 0 auto; border-radius: 8px; overflow: hidden; }
 
-    /* Unified Grid (Forces Sound Kits and Services to match) */
-    .kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1100px; margin: 0 auto; }
+    /* Unified Grid (Forces Kits & Services to 1:1 Aspect Ratio) */
+    .kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 0 auto; }
     .kit-card { background: #111; border: 1px solid #222; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: left; }
+    .kit-card:hover { border-color: var(--yellow); transform: translateY(-5px); }
     .kit-card img { 
         width: 100%; 
-        aspect-ratio: 1 / 1; /* Forces exact square dimensions for all items */
+        aspect-ratio: 1 / 1; /* Forces square dimensions to match Services */
         object-fit: cover; 
     }
     .kit-info { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
     .kit-info h3 { font-size: 1rem; margin: 0; }
     .kit-info .price { background: var(--yellow); color: #000; padding: 5px 12px; border-radius: 4px; font-weight: bold; }
 
-    /* Social Grid */
-    .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
-    .social-card { background: #111; padding: 30px; border: 1px solid #222; border-radius: 8px; }
-    .social-card img { width: 50px; height: 50px; margin-bottom: 15px; }
+    /* Connect Grid */
+    .social-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .social-card { background: #000; padding: 30px; border: 1px solid #222; border-radius: 8px; transition: 0.3s; }
+    .social-card:hover { border-color: var(--yellow); }
+    .social-card img { width: 50px; margin-bottom: 15px; }
 
-    /* Footer with Logo */
-    footer { padding: 60px 20px; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
-    .footer-logo { max-width: 80px; margin-bottom: 20px; }
-
-    #topBtn {
-        position: fixed; bottom: 30px; right: 30px; z-index: 99;
-        background-color: var(--yellow); color: black; border: none;
-        width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: none;
+    /* Contact Form Fix */
+    .contact-form { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; }
+    .form-row { display: flex; gap: 20px; }
+    .contact-form input, .contact-form textarea { 
+        background: #000; border: 1px solid #333; color: #fff; padding: 15px; 
+        font-family: inherit; width: 100%; box-sizing: border-box; font-size: 0.9rem;
     }
+    .contact-form input:focus, .contact-form textarea:focus { border-color: var(--yellow); outline: none; }
+    .btn { background: var(--yellow); color: #000; padding: 15px 40px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+    .btn:hover { opacity: 0.8; }
+
+    footer { padding: 80px 0; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
+    .footer-logo { max-width: 100px; margin-bottom: 25px; }
+
+    #topBtn { position: fixed; bottom: 30px; right: 30px; z-index: 99; background: var(--yellow); color: #000; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: none; font-weight: bold; }
+
+    @media (max-width: 768px) { .form-row { flex-direction: column; } .social-grid { grid-template-columns: 1fr; } .nav-links { display: none; } }
     </style>
 </head>
 <body>
 
     <nav>
-       <div class="nav-logo"><img src="/images/nav_logo.png" alt="Logo"></div>
+       <div class="nav-logo"><img src="/images/nav-logo.png" alt="Logo"></div>
         <div class="nav-links">
             <a href="#beats">Beats</a>
             <a href="#socials">Connect</a>
@@ -82,9 +105,10 @@
         </div>
     </nav>
 
-    <!-- 1. HERO BACKGROUND -->
+    <!-- 1. HERO (Restored to original image layout) -->
     <section id="hero">
-        <div class="content-card">
+        <div class="container">
+            <img src="/images/image_3.png" alt="Logo" class="hero-logo">
             <h1>{{ site.data.site.producer_name }}</h1>
             <p>{{ site.data.site.bio }}</p>
         </div>
@@ -93,48 +117,54 @@
     <!-- 2. BEATSTARS PLAYER -->
     <section id="beats">
         <div class="container">
-            <h2>Beat Store</h2>
-            <div class="iframe-wrapper">
-                <iframe src="https://player.beatstars.com/?storeId=96640" height="600" scrolling="no"></iframe>
+            <div class="floating-card">
+                <h2>Beat Store</h2>
+                <div class="iframe-wrapper">
+                    <iframe src="https://player.beatstars.com/?storeId=96640" height="600" scrolling="no"></iframe>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. SOCIAL MEDIA THUMBNAILS -->
+    <!-- 3. CONNECT -->
     <section id="socials">
         <div class="container">
-            <h2>Connect</h2>
-            <div class="social-grid">
-                <a href="https://instagram.com/yourhandle" target="_blank" class="social-card">
-                    <img src="/images/instagram.png" alt="Instagram">
-                    <h3>Instagram</h3>
-                </a>
-                <a href="https://youtube.com/yourchannel" target="_blank" class="social-card">
-                    <img src="/images/youtube.png" alt="YouTube">
-                    <h3>YouTube</h3>
-                </a>
-                <a href="https://tiktok.com/@yourhandle" target="_blank" class="social-card">
-                    <img src="/images/tiktok.png" alt="TikTok">
-                    <h3>TikTok</h3>
-                </a>
+            <div class="floating-card">
+                <h2>Connect</h2>
+                <div class="social-grid">
+                    <a href="https://instagram.com/yourhandle" target="_blank" class="social-card">
+                        <img src="/images/instagram.png" alt="Instagram">
+                        <h3>Instagram</h3>
+                    </a>
+                    <a href="https://youtube.com/yourchannel" target="_blank" class="social-card">
+                        <img src="/images/youtube.png" alt="YouTube">
+                        <h3>YouTube</h3>
+                    </a>
+                    <a href="https://tiktok.com/@yourhandle" target="_blank" class="social-card">
+                        <img src="/images/tiktok.png" alt="TikTok">
+                        <h3>TikTok</h3>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. BEATSTARS SOUND KITS -->
+    <!-- 4. SOUND KITS -->
     <section id="kits">
         <div class="container">
-            <h2>Sound Kits</h2>
-            <div class="kits-grid">
-                {% for kit in site.data.site.sound_kits %}
-                <a href="{{ kit.link }}" target="_blank" class="kit-card">
-                    <img src="{{ kit.image }}" alt="{{ kit.title }}">
-                    <div class="kit-info">
-                        <h3>{{ kit.title }}</h3>
-                        <div class="price">{{ kit.price }}</div>
-                    </div>
-                </a>
-                {% endfor %}
+            <div class="floating-card">
+                <h2>Sound Kits</h2>
+                <div class="kits-grid">
+                    {% for kit in site.data.site.sound_kits %}
+                    <a href="{{ kit.link }}" target="_blank" class="kit-card">
+                        <img src="{{ kit.image }}" alt="{{ kit.title }}">
+                        <div class="kit-info">
+                            <h3>{{ kit.title }}</h3>
+                            <div class="price">{{ kit.price }}</div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </section>
@@ -142,45 +172,47 @@
    <!-- 5. SERVICES -->
     <section id="services">
         <div class="container">
-            <h2>Services</h2>
-            <div class="kits-grid"> <!-- Reusing the Kits CSS grid so it matches perfectly -->
-                {% for service in site.data.site.services %}
-                <a href="{{ service.link}}" target="_blank" class="kit-card">
-                    <img src="{{ service.image }}" alt="{{ service.title }}">
-                    <div class="kit-info">
-                        <h3>{{ service.title }}</h3>
-                        <div class="price">{{ service.price }}</div>
-                    </div>
-                </a>
-                {% endfor %}
+            <div class="floating-card">
+                <h2>Services</h2>
+                <div class="kits-grid">
+                    {% for service in site.data.site.services %}
+                    <a href="{{ service.link}}" target="_blank" class="kit-card">
+                        <img src="{{ service.image }}" alt="{{ service.title }}">
+                        <div class="kit-info">
+                            <h3>{{ service.title }}</h3>
+                            <div class="price">{{ service.price }}</div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 6. CONTACT FORM -->
+    <!-- 6. CONTACT (Form Fixed) -->
     <section id="contact">
         <div class="container">
-            <h2>Let's Work</h2>
-            <form name="contact" method="POST" data-netlify="true">
-                <div style="display: flex; gap: 20px;">
-                    <input type="text" name="name" placeholder="NAME" required>
-                    <input type="email" name="email" placeholder="EMAIL" required>
-                </div>
-                <input type="text" name="subject" placeholder="SUBJECT">
-                <textarea name="message" rows="5" placeholder="MESSAGE" required></textarea>
-                <div style="text-align: center; margin-top: 10px;">
-                    <button type="submit" class="btn">Send Message</button>
-                </div>
-            </form>
+            <div class="floating-card">
+                <h2>Let's Work</h2>
+                <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="NAME" required>
+                        <input type="email" name="email" placeholder="EMAIL" required>
+                    </div>
+                    <input type="text" name="subject" placeholder="SUBJECT">
+                    <textarea name="message" rows="5" placeholder="MESSAGE" required></textarea>
+                    <div><button type="submit" class="btn">Send Message</button></div>
+                </form>
+            </div>
         </div>
     </section>
 
     <footer>
-    <div class="container">
-        <img src="/images/footer.png" alt="Gipsta Music Logo" class="footer-logo">
-        <p>© 2026 {{ site.data.site.producer_name }}. All Rights Reserved.</p>
-    </div>
-</footer>
+        <div class="container">
+            <img src="/images/image_3.png" alt="Logo" class="footer-logo">
+            <p>© 2026 {{ site.data.site.producer_name }}. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <script>
       if (window.netlifyIdentity) {
