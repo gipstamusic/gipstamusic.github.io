@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ site.data.site.producer_name }} | Beat Store</title>
+    <link rel="icon" type="image/x-icon" href="/gipstamusic-favicon.ico">
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
     :root { --bg: #050505; --yellow: #FFDE00; --text: #ffffff; --gray: #7F7F7F; --dark-card: rgba(15, 15, 15, 0.95); }
@@ -80,7 +81,15 @@
     .footer-logo { max-width: 50px; margin-bottom: 10px; }
     footer p { margin: 0; font-size: 0.85rem; color: #7F7F7F; }
 
-    #topBtn { position: fixed; bottom: 30px; right: 30px; z-index: 99; background: var(--yellow); color: #000; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; display: none; font-weight: bold; }
+    #topBtn { 
+    position: fixed; bottom: 30px; right: 30px; z-index: 99; 
+    background: var(--yellow); color: #000; border: none; border-radius: 50%; 
+    width: 50px; height: 50px; cursor: pointer; display: none; 
+    font-weight: bold; 
+    font-size: 28px; /* Makes the arrow much larger */
+    line-height: 50px; /* Centers the arrow perfectly vertically */
+    padding: 0; /* Prevents weird off-center pushing */
+    }
 
     @media (max-width: 768px) { .form-row { flex-direction: column; } .nav-links { display: none; } }
     </style>
@@ -191,7 +200,7 @@
         <div class="container">
             <div class="floating-card">
                 <h2>Let's Work</h2>
-                <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                <form action="https://formspree.io/f/xwvypqby" method="POST" class="contact-form">
                     <div class="form-row">
                         <input type="text" name="name" placeholder="NAME" required>
                         <input type="email" name="email" placeholder="EMAIL" required>
@@ -206,7 +215,6 @@
 
     <footer>
         <div class="container">
-            <img src="/images/footer-logo.png" alt="Logo" class="footer-logo">
             <p>© <span id="year"></span> {{ site.data.site.producer_name }}. All Rights Reserved.</p>
         </div>
     </footer>
