@@ -91,21 +91,53 @@
     padding: 0; /* Prevents weird off-center pushing */
     }
 
-    @media (max-width: 768px) { .form-row { flex-direction: column; } .nav-links { display: none; } }
+    /* Hamburger Icon Base Styles */
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+    .hamburger span { width: 30px; height: 3px; background-color: var(--text); border-radius: 2px; }
+
+    /* Mobile Breakpoint */
+    @media (max-width: 768px) { 
+        .form-row { flex-direction: column; } 
+        .hamburger { display: flex; } /* Show the 3 lines on mobile */
+        
+        .nav-links { 
+            display: none; /* Hidden by default */
+            flex-direction: column; 
+            position: absolute; 
+            top: 80px; /* Pushes it just below the navbar */
+            left: 0; 
+            width: 100%; 
+            background: rgba(10, 10, 10, 0.98); 
+            padding: 20px 0; 
+            border-bottom: 1px solid #222;
+        }
+        
+        .nav-links.active { display: flex; } /* Class added by JS to show menu */
+        .nav-links a { margin: 15px 0; font-size: 1.2rem; text-align: center; }
+    }
     </style>
 </head>
 <body>
 
     <nav>
-       <div class="nav-logo"><img src="/images/nav-logo.png" alt="Logo"></div>
-        <div class="nav-links">
-            <a href="#beats">Beats</a>
-            <a href="#kits">Sound Kits</a>
-            <a href="#services">Services</a>
-            <a href="#socials">Connect</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    <div class="nav-logo"><img src="/images/nav-logo.png" alt="Logo"></div>
+    
+    <!-- The new Hamburger Icon -->
+    <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Added id="nav-links" here -->
+    <div class="nav-links" id="nav-links">
+        <a href="#beats">Beats</a>
+        <a href="#kits">Sound Kits</a>
+        <a href="#services">Services</a>
+        <a href="#socials">Connect</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
 
     <!-- 1. HERO -->
     <section id="hero">
