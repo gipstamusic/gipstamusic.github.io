@@ -80,7 +80,7 @@
     <!-- 1. HERO BACKGROUND -->
     <section id="hero">
         <div class="container">
-            <img src="/images/your-logo.png" alt="Logo" class="logo">
+            <img src="/images/logo.png" alt="Logo" class="logo">
             <h1 style="text-transform: uppercase; letter-spacing: 3px; font-size: 2.5rem; margin-bottom: 10px;">{{ site.data.site.producer_name }}</h1>
             <p style="color: var(--gray); font-size: 1.1rem; letter-spacing: 1px;">{{ site.data.site.bio }}</p>
         </div>
@@ -123,11 +123,11 @@
             <h2>Sound Kits</h2>
             <div class="kits-grid">
                 {% for kit in site.data.site.sound_kits %}
-                <a href="{{kit.link}}" target="_blank" class="kit-card">
-                    <img src="{{kit.image}}" alt="{{kit.title}}">
+                <a href="{{ kit.link }}" target="_blank" class="kit-card">
+                    <img src="{{ kit.image }}" alt="{{ kit.title }}">
                     <div class="kit-info">
-                        <h3>{{kit.title}}</h3>
-                        <div class="price">{{kit.price}}</div>
+                        <h3>{{ kit.title }}</h3>
+                        <div class="price">{{ kit.price }}</div>
                     </div>
                 </a>
                 {% endfor %}
@@ -141,11 +141,11 @@
             <h2>Services</h2>
             <div class="kits-grid"> <!-- Reusing the Kits CSS grid so it matches perfectly -->
                 {% for service in site.data.site.services %}
-                <a href="{{service.link}}" target="_blank" class="kit-card">
-                    <img src="{{service.image}}" alt="{{service.title}}">
+                <a href="{{ service.link}}" target="_blank" class="kit-card">
+                    <img src="{{ service.image }}" alt="{{ service.title }}">
                     <div class="kit-info">
-                        <h3>{{service.title}}</h3>
-                        <div class="price">{{service.price}}</div>
+                        <h3>{{ service.title }}</h3>
+                        <div class="price">{{ service.price }}</div>
                     </div>
                 </a>
                 {% endfor %}
