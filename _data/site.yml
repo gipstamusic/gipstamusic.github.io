@@ -1,8 +1,8 @@
 producer_name: "Gipsta Music"
 bio: "Trap & Hip-Hop Production. High-quality beats, mixing, and mastering."
-beatstars_id: "YOUR_STORE_ID"
-bg_image: "https://your-image-link-here.jpg"
-email: "your-email@example.com"
+beatstars_id: "96640"
+bg_image: "/images/img-background.jpg"
+email: "gipstamusic@gmail.com"
 sound_kits:
   - title: "Feed The Street (Drum Kit)"
     price: "$20.00"
