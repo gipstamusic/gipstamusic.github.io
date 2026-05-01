@@ -266,5 +266,22 @@
         };
     </script>
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="topBtn" title="Go to top">↑</button>
+    <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu open/close when clicking the 3 lines
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close the menu automatically when a link is clicked
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>
