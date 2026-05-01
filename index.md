@@ -38,8 +38,8 @@
     /* Hero Section */
     #hero { padding: 250px 0 150px; }
     #hero img.hero-logo { max-width: 140px; margin-bottom: 30px; }
-    #hero h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; }
-    #hero p { color: var(--gray); font-size: 1.1rem; letter-spacing: 1px; margin-top: 10px; }
+    #hero h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 4px; margin: 0; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+    #hero p { color: var(--gray); font-size: 1.1rem; letter-spacing: 1px; margin-top: 10px; text-shadow: 0 2px 10px rgba(0,0,0,0.8); }
 
     /* Floating Dark Card */
     .floating-card {
@@ -50,21 +50,22 @@
         box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
 
-    /* Beat Store Width Fix */
+    /* FIX 1: Beat Store Width Restored */
     .iframe-wrapper { width: 100%; max-width: 1200px; margin: 0 auto; border-radius: 8px; overflow: hidden; }
+    .iframe-wrapper iframe { width: 100%; border: none; display: block; }
 
-    /* Unified Grid (Kits & Services) */
-    .kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-    .kit-card { background: #111; border: 1px solid #222; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: left; }
+    /* FIX 2: Unified Flex Grid (Stops the 1-item stretch) */
+    .kits-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1100px; margin: 0 auto; }
+    .kit-card { background: #111; border: 1px solid #222; border-radius: 8px; overflow: hidden; transition: 0.3s; text-align: left; width: 100%; max-width: 350px; }
     .kit-card:hover { border-color: var(--yellow); transform: translateY(-5px); }
-    .kit-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+    .kit-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-bottom: 1px solid #222;}
     .kit-info { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
     .kit-info h3 { font-size: 0.95rem; margin: 0; }
     .kit-info .price { background: var(--yellow); color: #000; padding: 5px 10px; border-radius: 4px; font-weight: bold; }
 
-    /* Social Grid - Now 4 columns */
-    .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-    .social-card { background: #000; padding: 30px; border: 1px solid #222; border-radius: 8px; transition: 0.3s; }
+    /* Social Grid Flexbox */
+    .social-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .social-card { background: #000; padding: 30px; border: 1px solid #222; border-radius: 8px; transition: 0.3s; width: 100%; max-width: 200px; box-sizing: border-box; }
     .social-card:hover { border-color: var(--yellow); }
     .social-card img { width: 50px; margin-bottom: 15px; }
 
@@ -72,7 +73,8 @@
     .contact-form { display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto; }
     .form-row { display: flex; gap: 20px; }
     .contact-form input, .contact-form textarea { background: #000; border: 1px solid #333; color: #fff; padding: 15px; width: 100%; box-sizing: border-box; }
-    .btn { background: var(--yellow); color: #000; padding: 15px 40px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; }
+    .btn { background: var(--yellow); color: #000; padding: 15px 40px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+    .btn:hover { opacity: 0.8; }
 
     footer { padding: 80px 0; background: #000; text-align: center; border-top: 1px solid #1a1a1a; }
     .footer-logo { max-width: 100px; margin-bottom: 25px; }
@@ -156,25 +158,25 @@
         </div>
     </section>
 
-    <!-- 5. CONNECT (Moved before Contact) -->
+    <!-- 5. CONNECT -->
     <section id="socials">
         <div class="container">
             <div class="floating-card">
                 <h2>Connect</h2>
                 <div class="social-grid">
-                    <a href="https://instagram.com/gipstamusic" target="_blank" class="social-card">
+                    <a href="https://instagram.com/yourhandle" target="_blank" class="social-card">
                         <img src="/images/instagram.png" alt="Instagram">
                         <h3>Instagram</h3>
                     </a>
-                    <a href="https://youtube.com//@gipstabeats" target="_blank" class="social-card">
+                    <a href="https://youtube.com/channel1" target="_blank" class="social-card">
                         <img src="/images/youtube.png" alt="YouTube Main">
                         <h3>YouTube</h3>
                     </a>
-                    <a href="https://youtube.com/@gipstamusic" target="_blank" class="social-card">
+                    <a href="https://youtube.com/channel2" target="_blank" class="social-card">
                         <img src="/images/youtube.png" alt="YouTube Beats">
                         <h3>Beats Channel</h3>
                     </a>
-                    <a href="https://tiktok.com/@gipstamusic" target="_blank" class="social-card">
+                    <a href="https://tiktok.com/@yourhandle" target="_blank" class="social-card">
                         <img src="/images/tiktok.png" alt="TikTok">
                         <h3>TikTok</h3>
                     </a>
