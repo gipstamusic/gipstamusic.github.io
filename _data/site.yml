@@ -3,7 +3,7 @@ bio: "Trap & Hip-Hop Production. High-quality beats, mixing, and mastering."
 beatstars_id: "96640"
 bg_image: "/images/img-background.jpg"
 email: "gipstamusic@gmail.com"
-sound_kits:
+kits:
   - title: "Feed The Street (Drum Kit)"
     price: "$20.00"
     image: "/images/feed-the-street.jpg"

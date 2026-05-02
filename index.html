@@ -137,7 +137,7 @@
     <!-- Added id="nav-links" here -->
     <div class="nav-links" id="nav-links">
         <a href="#beats">Beats</a>
-        <a href="#kits">Sound Kits</a>
+        <a href="#kits">Kits</a>
         <a href="#services">Services</a>
         <a href="#socials">Connect</a>
         <a href="#contact">Contact</a>
@@ -165,13 +165,13 @@
         </div>
     </section>
 
-    <!-- 3. SOUND KITS -->
+    <!-- 3. KITS -->
     <section id="kits">
         <div class="container">
             <div class="floating-card">
-                <h2>Sound Kits</h2>
+                <h2>Kits</h2>
                 <div class="kits-grid">
-                    {% for kit in site.data.site.sound_kits %}
+                    {% for kit in site.data.site.kits %}
                     <a href="{{ kit.link }}" target="_blank" class="kit-card">
                         <img src="{{ kit.image }}" alt="{{ kit.title }}">
                         <div class="kit-info">
