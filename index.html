@@ -340,21 +340,24 @@
     </script>
     <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" id="topBtn" title="Go to top">↑</button>
     <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
-    const links = document.querySelectorAll('.nav-links a');
+        // 1. Grab the hamburger icon and the hidden links
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
 
-    // Toggle menu open/close when clicking the 3 lines
-    hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-    });
+        // 2. Open/Close the menu when the hamburger is clicked
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
 
-    // Close the menu automatically when a link is clicked
-    links.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
+        // 3. Automatically close the menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
