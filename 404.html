@@ -1,0 +1,126 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Track Not Found | GipstaMusic</title>
+    <link rel="icon" type="image/x-icon" href="/gipstamusic-favicon.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root { --bg: #050505; --yellow: #FFDE00; --text: #ffffff; --gray: #7F7F7F; }
+        
+        body, html { 
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif; 
+            background-color: var(--bg); color: var(--text); 
+            height: 100%; display: flex; flex-direction: column;
+        }
+
+        /* Navigation */
+        nav { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 15px 40px; position: fixed; width: 100%; top: 0; 
+            box-sizing: border-box; z-index: 100; background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .nav-logo img { height: 50px; width: auto; }
+        .nav-links a { margin-left: 20px; font-size: 0.85rem; text-transform: uppercase; font-weight: bold; text-decoration: none; color: var(--text); }
+        .nav-links a:hover { color: var(--yellow); }
+
+        /* 404 Container */
+        .error-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 80px; /* offset for nav */
+        }
+
+        .error-container h1 {
+            font-size: 6rem;
+            color: var(--yellow);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 5px 20px rgba(255, 222, 0, 0.2);
+        }
+
+        .error-container h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 10px 0 20px 0;
+        }
+
+        .error-container p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .btn { 
+            background: var(--yellow); color: #000; padding: 15px 40px; 
+            font-weight: bold; border: none; border-radius: 4px; cursor: pointer; 
+            text-transform: uppercase; text-decoration: none; transition: 0.3s; 
+        }
+        .btn:hover { opacity: 0.8; transform: translateY(-3px); }
+
+        /* Mobile Nav Overrides */
+        .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
+        .hamburger span { width: 30px; height: 3px; background-color: var(--text); border-radius: 2px; }
+
+        @media (max-width: 768px) { 
+            .hamburger { display: flex; } 
+            .nav-links { 
+                display: none; flex-direction: column; position: absolute; 
+                top: 80px; left: 0; width: 100%; background: rgba(10, 10, 10, 0.98); 
+                padding: 20px 0; border-bottom: 1px solid #222;
+            }
+            .nav-links.active { display: flex; } 
+            .nav-links a { margin: 15px 0; font-size: 1.2rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-logo"><img src="/images/nav-logo.png" alt="Logo"></a>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="/#iframe-wrapper">Beats</a>
+            <a href="/#kits">Kits</a>
+            <a href="/#services">Services</a>
+            <a href="/#socials">Connect</a>
+            <a href="/#feed">Feed</a>
+            <a href="/#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="error-container">
+        <h1>404</h1>
+        <h2>Track Not Found</h2>
+        <p>The beat, kit, or page you are looking for doesn't exist or has been moved.</p>
+        <a href="/" class="btn">Return to Store</a>
+    </div>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
